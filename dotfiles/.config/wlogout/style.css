@@ -1,1 +1,33 @@
-@import "themes/glass/style.css";
+@import "./themes/catppuccin/themes/frappe/mauve.css";
+
+button {
+  border-width: 2px;
+	background-size: 15%;
+  margin-right: 250px;
+  border-radius: 80px;
+}
+
+#lock {
+    background-image: url("/home/dcavaliere/.config/wlogout/icons/lock.svg");
+}
+
+#logout {
+    background-image: url("/home/dcavaliere/.config/wlogout/icons/logout.svg");
+}
+
+#suspend {
+    background-image: url("/home/dcavaliere/.config/wlogout/icons/suspend.svg");
+}
+
+#hibernate {
+    background-image: url("/home/dcavaliere/.config/wlogout/icons/hibernate.svg");
+}
+
+#shutdown {
+    background-image: url("/home/dcavaliere/.config/wlogout/icons/shutdown.svg");
+    margin-right: 0;
+}
+
+#reboot {
+    background-image: url("/home/dcavaliere/.config/wlogout/icons/reboot.svg");
+}

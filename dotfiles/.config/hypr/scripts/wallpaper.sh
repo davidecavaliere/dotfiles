@@ -75,6 +75,9 @@ used_wallpaper=$wallpaper
 _writeLog "Setting wallpaper with source image $wallpaper"
 tmpwallpaper=$wallpaper
 
+hyprctl hyprpaper wallpaper "DP-5, $used_wallpaper, contain"
+
+
 # -----------------------------------------------------
 # Copy path of current wallpaper to cache file
 # -----------------------------------------------------
@@ -142,12 +145,6 @@ fi
 
 sleep 1
 $HOME/.config/waybar/launch.sh
-
-# -----------------------------------------------------
-# Reload nwg-dock-hyprland
-# -----------------------------------------------------
-
-$HOME/.config/nwg-dock-hyprland/launch.sh &
 
 # -----------------------------------------------------
 # Update Pywalfox

@@ -1,1 +1,1 @@
-/ml4w-glass;/ml4w-glass/default
+/startr-catpuccin;/startr-catpuccin

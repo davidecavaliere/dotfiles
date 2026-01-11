@@ -28,15 +28,6 @@ alias quick='~/.config/ml4w/bin/ml4w-quicklinks.sh'
 alias wallpaper='~/.config/ml4w/bin/ml4w-wallpaper.sh'
 
 # -----------------------------------------------------
-# ML4W Apps
-# -----------------------------------------------------
-alias ml4w='flatpak run com.ml4w.welcome'
-alias ml4w-settings='flatpak run com.ml4w.settings'
-alias ml4w-calendar='flatpak run com.ml4w.calendar'
-alias ml4w-hyprland='flatpak run com.ml4w.hyprlandsettings'
-alias ml4w-sidebar='flatpak run com.ml4w.sidebar'
-
-# -----------------------------------------------------
 # Git
 # -----------------------------------------------------
 alias gs="git status"

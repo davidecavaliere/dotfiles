@@ -1,0 +1,3 @@
+[submodule "dotfiles/.config/wlogout/themes/catpuccin"]
+	path = dotfiles/.config/wlogout/themes/catpuccin
+	url = git@github.com:catppuccin/wlogout.git

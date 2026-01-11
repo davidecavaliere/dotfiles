@@ -1,0 +1,39 @@
+{
+  "layer": "top",
+    "margin-bottom": 0,
+
+
+    "margin-left": 0,
+    "margin-right": 0,    
+    "spacing": 0,
+
+    "include": [
+      "~/.config/waybar/modules.json"
+    ],
+
+    "modules-left": [
+      "custom/updates",
+    "keyboard-state",
+    "cpu",
+    "memory",
+    "disk",
+    "network",
+    ],
+
+    "modules-center": [
+      "hyprland/workspaces",
+      "clock",
+    ],
+
+    "modules-right": [
+      "mpris",
+      "pulseaudio",
+      "bluetooth",
+      "group/settings",
+      "custom/cliphist",
+      "custom/hypridle",
+      "custom/hyprshade",
+      "tray",
+      "custom/exit",
+    ]
+}

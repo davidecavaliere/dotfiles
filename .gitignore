@@ -113,3 +113,6 @@ docs/.vitepress/cache
 
 # devicon
 docs/.vitepress/devicon
+
+# tmux plugins 
+dotfiles/.config/tmux/plugins

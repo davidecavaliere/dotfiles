@@ -114,5 +114,8 @@ docs/.vitepress/cache
 # devicon
 docs/.vitepress/devicon
 
-# tmux plugins 
+# various things installed as git submodules
 dotfiles/.config/tmux/plugins
+dotfiles/.config/alacritty/themes
+
+

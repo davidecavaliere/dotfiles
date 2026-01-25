@@ -1,0 +1,15 @@
+import = ["/home/dcavaliere/.config/alacritty/themes/catppuccin/catppuccin-mocha.toml"]
+live_config_reload = true
+
+[cursor.style]
+shape = "Beam"
+
+[font]
+size = 11 
+
+[font.normal]
+family = "FiraMono Nerd Font"
+
+[window]
+decorations = "none"
+dynamic_padding = true

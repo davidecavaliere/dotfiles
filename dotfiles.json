@@ -1,0 +1,27 @@
+{
+  "name": "@davidecavaliere/dotfiles",
+  "version": "1.0.0",
+  "description": "All of my dotfiles",
+  "dependencies": {
+    "hyprland": "*",
+    "hyprctl": "*",
+    "hyprpaper": "*",
+    "hypridle": "*",
+    "hyprlauncher": "*",
+    "hyprlock": "*",
+    "ashell": "*",
+    "rofi": "*",
+    "alacritty": "*",
+    "waypaper": "*",
+    "swaync": "*",
+    "wl-clipboard": "*",
+    "inotify-tools": "*",
+    "jq": "*",
+    "pavucontrol": "*",
+    "brightnessctl": "*",
+    "wpctl": "*",
+    "pactl": "*",
+    "playerctl": "*",
+    "gamemode": "*"
+  }
+}

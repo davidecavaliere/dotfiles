@@ -1,0 +1,6 @@
+[submodule "dotfiles/config/alacritty/themes"]
+	path = dotfiles/config/alacritty/themes
+	url = https://github.com/alacritty/alacritty-theme
+[submodule "dotfiles/config/wlogout/themes/catppuccin"]
+	path = dotfiles/config/wlogout/themes/catppuccin
+	url = git@github.com:catppuccin/wlogout.git

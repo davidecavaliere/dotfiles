@@ -139,12 +139,6 @@ else
     $HOME/.local/bin/matugen image $used_wallpaper -m "light"
 fi
 
-# -----------------------------------------------------
-# Reload Waybar
-# -----------------------------------------------------
-
-sleep 1
-$HOME/.config/waybar/launch.sh
 
 # -----------------------------------------------------
 # Update Pywalfox

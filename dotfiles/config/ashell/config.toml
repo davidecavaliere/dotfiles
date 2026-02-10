@@ -15,15 +15,17 @@ app_launcher_cmd = "rofi -show drun"
 
 [modules]
 left = [
-    ["appLauncher", "Updates", "Workspaces"],
+    ["appLauncher", "Updates"],
     "WindowTitle",
     "MediaPlayer"
 ]
 center = [
   "Clock", 
+  "Workspaces",
 ]
 right = [
     "SystemInfo",
+    "Volume",
     ["Tray", "Privacy", "Settings"]
 ]
 
@@ -57,6 +59,16 @@ enable_workspace_filling = true
 name = "appLauncher"
 icon = "󱗼"
 command = "hyprlauncher"
+
+[[CustomModule]]
+name = "Volume"
+icon = ""
+command = "pavucontrol"
+listen_cmd = "bash -lc 'cd ~/.config/ashell && ./ashell-volume-status.sh'"
+icons.'muted' = "🔇"
+icons.'low' = "🔈"
+icons.'medium' = "🔉"
+icons.'high' = "🔊"
 
 [window_title]
 # Truncate window title after this many characters
@@ -103,4 +115,3 @@ strong = "#45475a"
 [appearance.secondary_color]
 base = "#11111b"
 strong = "#1b1b25"
-

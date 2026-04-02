@@ -1,0 +1,7 @@
+✓ JSON is valid
+✓ hermes entry exists
+✓ hermes model is github-copilot/claude-haiku-4.5
+✓ hermes skills contains git-master
+✓ hermes has exactly 2 fields: model, skills
+
+All assertions passed!

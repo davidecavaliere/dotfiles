@@ -1,0 +1,39 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "share": "disabled",
+  "model": "opencode/gpt-5.1-codex",
+  "mcp": {
+    "gh_grep": {
+      "type": "remote",
+      "url": "https://mcp.grep.app"
+    },
+    "chrome-devtools": {
+      "type": "local",
+      "command": ["npx", "-y", "chrome-devtools-mcp@latest"],
+      "enabled": true
+    },
+    "filesystem": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-filesystem"],
+      "enabled": true
+    },
+    "sequential-thinking": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-sequential-thinking"],
+      "enabled": true
+    }
+  },
+  "agent": {
+    "hermes": {
+      "model": "opencode/gpt-5.2-codex",
+      "skills": ["git-master"]
+    },
+    "slave": {
+      "model": "opencode/gpt-5.1-codex"
+    }
+  },
+  "instructions": [
+    "rules/code-implementation.md",
+    "rules/commit-guidelines.md"
+  ]
+}

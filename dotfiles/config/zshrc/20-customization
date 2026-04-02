@@ -50,3 +50,24 @@ setopt appendhistory
 
 # Startship prompt
 eval "$(starship init zsh)"
+
+# -----------------------------------------------------
+# OpenCode helper function
+# -----------------------------------------------------
+omo() {
+  local config_file="$HOME/.config/opencode/opencode.jsonc"
+  local updated_json
+
+  updated_json=$(jq '
+    .plugin = (
+      (.plugin // [])
+      | if any(.[]; test("^oh-my-opencode(@.*)?$")) then
+          .
+        else
+          . + ["oh-my-opencode@latest"]
+        end
+    )
+  ' "$config_file")
+
+  OPENCODE_CONFIG_CONTENT="$updated_json" opencode "$@"
+}

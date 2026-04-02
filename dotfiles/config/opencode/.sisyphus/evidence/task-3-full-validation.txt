@@ -1,0 +1,3 @@
+PASS: JSON config valid
+1
+1

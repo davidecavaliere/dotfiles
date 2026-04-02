@@ -1,0 +1,14 @@
+{
+    "custom/updates": {
+        "icon": "󰮕",
+        "label": "{text}",
+        "tooltip": "{tooltip} ({text} updates)",
+        "truncationSize": -1,
+        "execute": "~/.config/ml4w/scripts/updates.sh",
+        "interval": 3600000,
+        "hideOnEmpty": false,
+        "actions": {
+            "onLeftClick": "hyprctl dispatch exec \"$(cat ~/.config/ml4w/settings/terminal.sh) -e ~/.config/ml4w/scripts/installupdates.sh\""
+        }
+    }
+}

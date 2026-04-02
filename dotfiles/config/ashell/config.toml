@@ -17,13 +17,13 @@ app_launcher_cmd = "rofi -show drun"
 left = [
     ["appLauncher", "Updates"],
     "WindowTitle",
-    "MediaPlayer"
 ]
 center = [
   "Clock", 
   "Workspaces",
 ]
 right = [
+    "MediaPlayer",
     "SystemInfo",
     "Volume",
     ["Tray", "Privacy", "Settings"]
@@ -60,15 +60,15 @@ name = "appLauncher"
 icon = "󱗼"
 command = "hyprlauncher"
 
-[[CustomModule]]
-name = "Volume"
-icon = ""
-command = "pavucontrol"
-listen_cmd = "bash -lc 'cd ~/.config/ashell && ./ashell-volume-status.sh'"
-icons.'muted' = "🔇"
-icons.'low' = "🔈"
-icons.'medium' = "🔉"
-icons.'high' = "🔊"
+# [[CustomModule]]
+# name = "Volume"
+# icon = ""
+# command = "pavucontrol"
+# listen_cmd = "bash -lc 'cd ~/.config/ashell && ./ashell-volume-status.sh'"
+# icons.'muted' = "🔇"
+# icons.'low' = "🔈"
+# icons.'medium' = "🔉"
+# icons.'high' = "🔊"
 
 [window_title]
 # Truncate window title after this many characters
@@ -88,8 +88,8 @@ bluetooth_more_cmd = "blueberry"
 
 [appearance]
 # Font configuration
-font_name = "FiraCode Nerd Font"
-scale_factor = 1.0
+font_name = "RobotoMono Nerd Font"
+scale_factor = 1.1
 
 # Style: Regular, Solid, Islands
 style = "Solid"

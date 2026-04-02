@@ -41,14 +41,14 @@ apply_theme() {
         echo "Detected dark theme preference (gtk-application-prefer-dark-theme=1/true). Applying dark matugen theme..."
         $HOME/.local/bin/matugen image $(cat ~/.cache/ml4w/hyprland-dotfiles/current_wallpaper)
         $HOME/.config/nwg-dock-hyprland/launch.sh &
-        pkill ashell && ashell &
+        hyprpanel quit; hyprpanel &
         $HOME/.config/hypr/scripts/gtk.sh &
         swaync-client -rs
     elif [[ "$THEME_PREF" == "0" || "$THEME_PREF" == "false" ]]; then
         echo "Detected light theme preference (gtk-application-prefer-dark-theme=0/false). Applying light matugen theme..."
         $HOME/.local/bin/matugen image $(cat ~/.cache/ml4w/hyprland-dotfiles/current_wallpaper) -m "light"
         $HOME/.config/nwg-dock-hyprland/launch.sh &
-        pkill ashell && ashell &
+        hyprpanel quit; hyprpanel &
         $HOME/.config/hypr/scripts/gtk.sh &
         swaync-client -rs
     else

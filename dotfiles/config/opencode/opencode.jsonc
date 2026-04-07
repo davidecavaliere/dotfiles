@@ -16,19 +16,20 @@
       "type": "local",
       "command": ["npx", "-y", "@modelcontextprotocol/server-filesystem"],
       "enabled": true
-    },
-    "sequential-thinking": {
-      "type": "local",
-      "command": ["npx", "-y", "@modelcontextprotocol/server-sequential-thinking"],
-      "enabled": true
     }
   },
   "agent": {
+    "plan": {
+      "model": "opencode/claude-opus-4-6"
+    },
     "hermes": {
-      "model": "opencode/gpt-5.2-codex",
+      "model": "opencode/glm-5-free",
       "skills": ["git-master"]
     },
     "slave": {
+      "model": "opencode/gpt-5.1-codex"
+    },
+    "debug": {
       "model": "opencode/gpt-5.1-codex"
     }
   },

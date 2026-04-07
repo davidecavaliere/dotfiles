@@ -6,6 +6,15 @@ When you need to quickly answer questions or find information:
 - It has access to `websearch` and `gh_grep` for finding answers
 - It's read-only (no file edits or bash commands)
 
+## Using @debug Agent
+
+When troubleshooting an issue — invoke `@debug` instead of guessing.
+
+- **Searches online first**: GitHub Issues, web search, documentation — before proposing any fix
+- **Reads local state**: Can read config files and run diagnostic commands (`journalctl`, `systemctl status`, `hyprctl`, `pacman -Q`, etc.)
+- **Read-only**: Cannot edit or create files — only reports findings with cited sources
+- **Use when**: Something is broken, misbehaving, or you need to understand why a tool/config isn't working
+
 ## Hermes — Git Workflow Agent
 
 **Purpose:** Specialized agent for complex git operations including atomic commits, rebase/squash workflows, history search (blame, bisect, log -S), and branch management.

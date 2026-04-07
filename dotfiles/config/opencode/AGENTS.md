@@ -15,6 +15,16 @@ When troubleshooting an issue — invoke `@debug` instead of guessing.
 - **Read-only**: Cannot edit or create files — only reports findings with cited sources
 - **Use when**: Something is broken, misbehaving, or you need to understand why a tool/config isn't working
 
+## Using @scout Agent
+
+When exploring ideas, evaluating libraries, or researching approaches — invoke `@scout`.
+
+- **Searches broadly then deeply**: Finds latest libraries, compares options, checks real-world usage on GitHub
+- **Opinionated**: Doesn't just list options — recommends one and explains why
+- **Checks recency and health**: Flags stale repos, compares star counts, looks at recent activity
+- **Read-only**: Cannot edit or create files — reports findings with links and recommendations
+- **Use when**: "What's the best library for X?", "Is there a better way to do Y?", "What are people using for Z these days?"
+
 ## Hermes — Git Workflow Agent
 
 **Purpose:** Specialized agent for complex git operations including atomic commits, rebase/squash workflows, history search (blame, bisect, log -S), and branch management.

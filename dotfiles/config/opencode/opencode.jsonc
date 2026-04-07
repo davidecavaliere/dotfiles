@@ -20,16 +20,19 @@
   },
   "agent": {
     "plan": {
-      "model": "opencode/claude-opus-4-6"
+      "model": "opencode/claude-sonnet-4-6"
     },
     "hermes": {
-      "model": "opencode/glm-5-free",
+      "model": "ollama-cloud/glm-5",
       "skills": ["git-master"]
     },
     "slave": {
       "model": "opencode/gpt-5.1-codex"
     },
     "debug": {
+      "model": "opencode/gpt-5.1-codex"
+    },
+    "scout": {
       "model": "opencode/gpt-5.1-codex"
     }
   },

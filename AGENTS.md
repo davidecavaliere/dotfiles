@@ -103,6 +103,7 @@ Config at `dotfiles/config/opencode/`:
 - `rules/commit-guidelines.md` — conventional commits with emojis; never stage new files
 - `agents/ask.md` — read-only research agent (web search, no file edits)
 - `agents/debug.md` — read-only troubleshooter (searches online first, runs diagnostic commands, cites sources)
+- `agents/scout.md` — read-only idea explorer (researches libraries, compares approaches, recommends options)
 - `agents/slave.md` — passive executor (does exactly what told, LSP verification)
 - Hermes agent — git specialist with `git-master` skill (see `AGENTS.md` in opencode dir)
 - `oh-my-openagent.json` — model mappings for agent categories (GitHub Copilot models)

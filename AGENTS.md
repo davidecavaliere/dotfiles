@@ -1,178 +1,108 @@
-# AGENTS.md — Dotfiles Repository Guidelines
+# AGENTS.md — Dotfiles Repository
 
-## Repository Overview
+Personal Hyprland dotfiles forked from ML4W Dotfiles, customized with Catppuccin Mocha theming.
 
-Personal Hyprland dotfiles forked from ML4W Dotfiles, customized with Catppuccin Mocha theming. All configuration lives under `dotfiles/config/` and is symlinked into `~/.config/`.
+**All `~/.config/*` directories are symlinks into this repo.** Always reference `dotfiles/config/…` paths, never `~/.config/`.
 
-**IMPORTANT:** All `~/.config/*` directories are symlinks into this repo. When working with configs, always reference paths relative to this repo (e.g., `dotfiles/config/hypr/...`), NOT `~/.config/`.
-
-## Project Structure
+## Project Layout
 
 ```
-dotfiles/
-  config/
-    hypr/           # Hyprland WM (entry: hyprland.conf, modular via source)
-    hyprpanel/      # Status bar (JSON + SCSS)
-    waybar/         # Alternative status bar
-    rofi/           # App launcher (.rasi files)
-    kitty/          # Terminal (with alacritty-theme submodule)
-    alacritty/      # Alternative terminal
-    ml4w/           # Helper scripts, listeners, settings, wallpapers
-    swaync/         # Notification center
-    wlogout/        # Logout menu (with catppuccin submodule)
-    waypaper/       # Wallpaper manager
-    tmux/           # Terminal multiplexer
-    walker/         # App launcher
-    ashell/         # Shell panel
-    ...             # GTK, Qt6, starship, ohmyposh, etc.
-dotfiles.json       # System dependencies manifest (package.json-style)
+dotfiles/config/          # 33 config directories, symlinked to ~/.config/
+  hypr/                   # Hyprland WM — main config system
+    hyprland.conf         # Entry point (sources everything via ~/.config/hypr/ paths)
+    colors.conf           # Catppuccin Mocha color variables
+    hyprtoolkit.conf      # Theme variables (ARGB hex) for hyprtoolkit apps
+    scripts/              # 24 shell scripts (wallpaper, gamemode, keybindings, etc.)
+    effects/wallpaper/    # 14 wallpaper effect presets (blur, blackwhite, negate variants)
+    conf/                 # Modular configs — each sources a variation from its subdir
+  hyprpanel/              # Status bar (JSON + SCSS) — active bar
+  ml4w/                   # Helper scripts, listeners, settings (legacy ML4W infra)
+    library.sh            # Shared logging: exports _writeLog() only
+    listeners.sh          # Starts all listener scripts
+    listeners/            # 2 listener scripts (gtk-theme-switcher, low-bat-notification)
+    settings/             # 59 plain-text setting files (not scripts)
+    scripts/              # 13 utility scripts
+  opencode/               # OpenCode agent config (AGENTS.md, rules, agents, models)
+  rofi/ waybar/ kitty/ alacritty/ swaync/ wlogout/ tmux/ walker/ ashell/ …
+dotfiles.json             # System package dependencies manifest
+opencode.json             # Root OpenCode config (model override only)
 ```
 
-## Hyprland Configuration Architecture
+## Hyprland Module System
 
-Entry point: `dotfiles/config/hypr/hyprland.conf` — uses `source` to compose modular configs:
+`hyprland.conf` uses `source =` to compose configs. Each `conf/*.conf` is a one-liner that sources a variation file from its subdirectory. To switch variations, change the `source` path in the parent conf.
 
-```
-hyprland.conf
-  → conf/monitor.conf → conf/monitors/highres.conf
-  → conf/environment.conf → conf/environments/default.conf
-  → conf/keybinding.conf → conf/keybindings/default.conf
-  → conf/decoration.conf → conf/decorations/default.conf
-  → conf/window.conf → conf/windows/default.conf
-  → conf/animation.conf → conf/animations/default.conf
-  → conf/layout.conf → conf/layouts/default.conf
-  → conf/autostart.conf, conf/misc.conf, conf/ml4w.conf, etc.
-  → colors.conf (Catppuccin Mocha variables)
-  → conf/custom.conf (user overrides, currently empty)
-```
+| Module | Variations | Active |
+|--------|-----------|--------|
+| `conf/monitors/` | 12 | `highres.conf` |
+| `conf/environments/` | 3 | `default.conf` |
+| `conf/decorations/` | 10 | — |
+| `conf/windows/` | 13 | — |
+| `conf/animations/` | 10 | — |
+| `conf/keybindings/` | 2 | `default.conf` |
+| `conf/layouts/` | 2 | — |
+| `conf/windowrules/` | 2 | — |
+| `conf/workspaces/` | 1 | — |
 
-**Switchable variations** exist for monitors (12), environments (3), decorations (10), windows/borders (13), animations (10), keybindings (2), and layouts (2). Change the `source` line in the parent conf to swap.
+Additional non-switchable conf files: `autostart.conf`, `cursor.conf`, `keyboard.conf`, `misc.conf`, `ml4w.conf`, `workspace.conf`, `custom.conf` (empty — user overrides go here).
+
+**Note:** `hyprland.conf` sources via `~/.config/hypr/…` paths (symlink), not repo-relative paths.
 
 ## Build / Lint / Test
 
-### No formal build, lint, or test infrastructure exists.
-
-- **No test framework** — zero test files, no bats, no pytest, no jest
-- **No linters configured** — no shellcheck, shfmt, prettier, or editorconfig
-- **No task runners** — no Makefile, justfile, or Taskfile
+**None.** No test framework, no linters, no task runners, no Makefile.
 
 ### CI/CD
 
-Single workflow: `.github/workflows/docs.yml`
-- Triggers on push to `main` (note: active branch is `master`)
-- Uses Bun + Node.js 20 + VitePress to build and deploy docs to GitHub Pages
+Single workflow: `.github/workflows/docs.yml` — deploys VitePress docs to GitHub Pages.
+- Triggers on push to `main` branch (active branch is `master` — workflow currently unreachable)
+- Commands: `bun install` → `bun run docs:build`
+- Output: `docs/.vitepress/dist`
 
-### Documentation (if working on docs/)
+## Bash Script Conventions
 
-```bash
-bun install          # Install deps
-bun run docs:dev     # Run dev server
-bun run docs:build   # Build static site
-```
+~109 user-authored `.sh` files across the repo (plus ~70 in `tmux/plugins/` — gitignored dependencies).
 
-## Code Style Guidelines
+**Target conventions** (inconsistently followed — treat as goals, not current state):
 
-### Bash Scripts (`.sh`) — Primary language, 70+ scripts
+- Shebang: `#!/usr/bin/env bash` (3 scripts use `#!/bin/bash` instead)
+- Quote variables: `"$var"` not `$var`
+- Prefer `[[ ]]` over `[ ]`
+- UPPERCASE for globals, `local` + lowercase for function locals
+- Check file existence before sourcing: `[ -f ... ]`
+- `library.sh` provides `_writeLog()` — only 1 script currently sources it
 
-- **Shebang:** Always `#!/usr/bin/env bash`
-- **Variables:** UPPERCASE for globals, lowercase for locals
-- **Quoting:** Always quote variables: `"$var"`, not `$var`
-- **Conditionals:** Use `[[ ]]` over `[ ]`, `==` for string comparison
-- **Functions:** Define before use, use `local` for scope
-- **Error handling:** Check file existence with `[ -f ... ]` before sourcing/reading
-- **Logging:** Source `library.sh` from `~/.config/ml4w/` for `_writeLog` and `_writeError`
-- **No comments on obvious code** — only explain non-obvious logic
-- **No emojis in scripts** unless part of user-facing output (notifications)
+## Config File Conventions
 
-### Hyprland Configs (`.conf`)
+- **Hyprland `.conf`**: 2-space indent, `$camelCase` variables, `bind = MOD, KEY, dispatcher, arg`
+- **JSON**: 2-space indent, no trailing commas
+- **Naming**: kebab-case for scripts and config files, lowercase directories
 
-- **Indentation:** 2 spaces
-- **Variables:** `$variableName` (camelCase), defined before use
-- **Comments:** Use `#` for section headers and explanations
-- **Binding format:** `bind = MOD, KEY, dispatcher, arg`
-- **Conventional modifiers:** `$mainMod` (SUPER), `$mainMod SHIFT`, `$mainMod CTRL`, `$mainMod ALT`
+## Git
 
-### JSON Configs
-
-- 2-space indentation
-- Trailing commas: NOT allowed
-- Keys: camelCase or snake_case (follow existing file convention)
-
-### TOML Configs
-
-- Follow existing file patterns (starship.toml, walker, rio, ashell)
-- Group related settings under `[section]` headers
-
-### RASI (Rofi) Configs
-
-- Use `*` selector for global styles
-- Follow Catppuccin color variable references from included themes
-
-### Naming Conventions
-
-- **Scripts:** kebab-case (`wallpaper-restore.sh`, `set-window-width.sh`)
-- **Config files:** kebab-case or descriptive (`default.conf`, `highres.conf`)
-- **Hyprland variables:** camelCase (`$mainMod`, `$ml4w_cache_folder`)
-- **Directories:** lowercase, no spaces
-
-## Git Workflow
-
-### Commit Messages — Conventional Commits
-
-```
-type(scope): description
-```
-
-**Types used:** `fix`, `feat`, `style`, `chore`, `docs`, `refactor`
-**Scopes:** `hyprland`, `ashell`, `wallpaper`, `hyprpanel`, `waybar`, etc.
-
-Examples:
-```
-fix(wallpaper): remove status bar reload on wallpaper change
-style(hyprland): update to 0.54 settings + minor style adjustments
-chore: get rid of matugen
-```
-
-### Branch Strategy
-
-- Active branch: `master`
-- No feature branches currently in use
-- NEVER force push to `master`
-
-### Git Submodules (2)
-
-1. `dotfiles/config/alacritty/themes` → alacritty/alacritty-theme
-2. `dotfiles/config/wlogout/themes/catppuccin` → catppuccin/wlogout
-
-Always initialize and update submodules: `git submodule update --init --recursive`
-
-## Key File Locations
-
-| Purpose | Path |
-|---------|------|
-| Hyprland entry | `dotfiles/config/hypr/hyprland.conf` |
-| Color variables | `dotfiles/config/hypr/colors.conf` |
-| Theme variables | `dotfiles/config/hypr/hyprtoolkit.conf` |
-| Wallpaper config | `dotfiles/config/hypr/hyprpaper.conf` |
-| Waypaper config | `dotfiles/config/waypaper/config.ini` |
-| Keybindings | `dotfiles/config/hypr/conf/keybindings/default.conf` |
-| Autostart apps | `dotfiles/config/hypr/conf/autostart.conf` |
-| Hypr scripts | `dotfiles/config/hypr/scripts/` (24 scripts) |
-| ML4W library | `dotfiles/config/ml4w/library.sh` |
-| Dependencies | `dotfiles.json` |
+- Single branch: `master` (never force push)
+- Conventional commits: `type(scope): description` with emojis
+  - Types: `feat`, `fix`, `style`, `chore`, `docs`, `refactor`
+  - Scopes: component name (`hyprland`, `wallpaper`, `ashell`, `hyprpanel`, etc.)
+- 2 submodules: `alacritty/themes` (HTTPS) and `wlogout/themes/catppuccin` (SSH)
+  - Init with: `git submodule update --init --recursive`
 
 ## Wallpaper System
 
-- **Backend:** hyprpaper (configured in `hyprpaper.conf`)
-- **Manager:** waypaper (config at `waypaper/config.ini`, folder: `~/Pictures/wallpapers`)
-- **Post-command:** runs `wallpaper.sh` which handles caching, blur effects, matugen theming
-- **Effects:** 14 presets in `conf/effects/wallpaper/` (blur, blackwhite, negate variants)
-- **Cache:** `~/.cache/ml4w/hyprland-doticons/` (generated wallpapers, blurred versions)
+hyprpaper (backend) → waypaper (manager, folder: `~/Pictures/wallpapers`) → `wallpaper.sh` (post-command: caching, blur effects). Cache: `~/.cache/ml4w/hyprland-dotfiles/`.
 
-## Dependencies
+## Key Dependencies
 
-System packages declared in `dotfiles.json`. Key tools:
-- hyprland, hyprctl, hyprpaper, hypridle, hyprlock
-- waypaper, rofi, alacritty, kitty
-- hyprpanel, swaync, wl-clipboard, inotify-tools
-- pavucontrol, brightnessctl, playerctl, gamemode
+Declared in `dotfiles.json`: hyprland, hyprctl, hyprpaper, hypridle, hyprlock, hyprpanel, hyprlauncher, rofi, alacritty, waypaper, swaync, wl-clipboard, inotify-tools, jq, pavucontrol, brightnessctl, playerctl, gamemode.
+
+## OpenCode Setup
+
+Config at `dotfiles/config/opencode/`:
+- `opencode.jsonc` — main config (model, MCP servers, agents, instruction rules)
+- `rules/code-implementation.md` — **never run build/test commands; never uncomment code without permission**
+- `rules/commit-guidelines.md` — conventional commits with emojis; never stage new files
+- `agents/ask.md` — read-only research agent (web search, no file edits)
+- `agents/debug.md` — read-only troubleshooter (searches online first, runs diagnostic commands, cites sources)
+- `agents/slave.md` — passive executor (does exactly what told, LSP verification)
+- Hermes agent — git specialist with `git-master` skill (see `AGENTS.md` in opencode dir)
+- `oh-my-openagent.json` — model mappings for agent categories (GitHub Copilot models)

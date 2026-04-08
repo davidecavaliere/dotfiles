@@ -1,7 +1,7 @@
 ---
 description: Quickly answers questions using web search and GitHub code examples
 mode: subagent
-model: opencode/gpt-5.1-codex
+model: opencode/glm-5
 temperature: 0.3
 permission:
   edit: deny

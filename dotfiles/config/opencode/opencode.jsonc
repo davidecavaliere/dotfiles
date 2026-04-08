@@ -20,7 +20,7 @@
   },
   "agent": {
     "plan": {
-      "model": "opencode/claude-sonnet-4-6"
+      "model": "ollama-cloud/cogito-2.1:671b"
     },
     "hermes": {
       "model": "ollama-cloud/glm-5",
@@ -30,10 +30,13 @@
       "model": "opencode/gpt-5.1-codex"
     },
     "debug": {
-      "model": "opencode/gpt-5.1-codex"
+      "model": "ollama-cloud/qwen3-coder:480b"
     },
     "scout": {
-      "model": "opencode/gpt-5.1-codex"
+      "model": "ollama-cloud/deepseek-v3.2"
+    },
+    "designer": {
+      "model": "opencode/gemini-3.1-pro"
     }
   },
   "instructions": [

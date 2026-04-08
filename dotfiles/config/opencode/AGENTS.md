@@ -25,6 +25,16 @@ When exploring ideas, evaluating libraries, or researching approaches — invoke
 - **Read-only**: Cannot edit or create files — reports findings with links and recommendations
 - **Use when**: "What's the best library for X?", "Is there a better way to do Y?", "What are people using for Z these days?"
 
+## Using @designer Agent
+
+When you need UI/UX guidance, layout decisions, or visual improvements — invoke `@designer`.
+
+- **Reads existing styles**: Understands your current theme, colors, spacing before proposing changes
+- **Delivers specifics**: Exact hex colors, pixel values, CSS/config snippets — not vague suggestions
+- **Accessibility-aware**: Checks contrast ratios, flags WCAG issues
+- **Read-only**: Cannot edit or create files — provides implementable code/config for you to apply
+- **Use when**: "How should I style this panel?", "Redesign the login screen", "What colors work with Catppuccin Mocha?"
+
 ## Hermes — Git Workflow Agent
 
 **Purpose:** Specialized agent for complex git operations including atomic commits, rebase/squash workflows, history search (blame, bisect, log -S), and branch management.

@@ -1,7 +1,7 @@
 ---
 description: Explores ideas and approaches by researching the latest libraries, patterns, and real-world examples. Read-only — reports findings, never modifies files.
 mode: subagent
-model: opencode/gpt-5.1-codex
+model: ollama-cloud/deepseek-v3.2
 temperature: 0.5
 permission:
   edit: deny

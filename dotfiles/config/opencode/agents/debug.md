@@ -1,7 +1,7 @@
 ---
 description: Diagnoses issues by searching online first, reading local files, and running diagnostic commands. Read-only — never modifies files.
 mode: subagent
-model: opencode/gpt-5.1-codex
+model: ollama-cloud/qwen3-coder:480b
 temperature: 0.3
 permission:
   edit: deny

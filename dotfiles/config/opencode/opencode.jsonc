@@ -1,7 +1,9 @@
 {
+  "plugin": [
+    "oh-my-openagent@latest"
+  ],
   "$schema": "https://opencode.ai/config.json",
   "share": "disabled",
-  "model": "opencode/gpt-5.1-codex",
   "mcp": {
     "gh_grep": {
       "type": "remote",
@@ -16,27 +18,11 @@
       "type": "local",
       "command": ["npx", "-y", "@modelcontextprotocol/server-filesystem"],
       "enabled": true
-    }
-  },
-  "agent": {
-    "plan": {
-      "model": "ollama-cloud/cogito-2.1:671b"
     },
-    "hermes": {
-      "model": "ollama-cloud/glm-5",
-      "skills": ["git-master"]
-    },
-    "slave": {
-      "model": "opencode/gpt-5.1-codex"
-    },
-    "debug": {
-      "model": "ollama-cloud/qwen3-coder:480b"
-    },
-    "scout": {
-      "model": "ollama-cloud/deepseek-v3.2"
-    },
-    "designer": {
-      "model": "opencode/gemini-3.1-pro"
+    "twitter": {
+      "type": "local",
+      "command": ["npx", "-y", "agent-twitter-client-mcp"],
+      "enabled": true
     }
   },
   "instructions": [

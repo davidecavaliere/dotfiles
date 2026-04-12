@@ -35,6 +35,15 @@ When you need UI/UX guidance, layout decisions, or visual improvements — invok
 - **Read-only**: Cannot edit or create files — provides implementable code/config for you to apply
 - **Use when**: "How should I style this panel?", "Redesign the login screen", "What colors work with Catppuccin Mocha?"
 
+## Using @xposter Agent
+
+When you want to post on X/Twitter — invoke `@xposter`.
+
+- **Drafts first, posts after approval**: Shows you the tweet before posting — never auto-posts
+- **Respects character limits**: Counts characters, proposes threads if needed
+- **Posts via MCP**: Uses `agent-twitter-client-mcp` to post (requires auth cookies or API keys)
+- **Use when**: "Tweet about this feature I just shipped", "Post a thread about my new setup"
+
 ## Hermes — Git Workflow Agent
 
 **Purpose:** Specialized agent for complex git operations including atomic commits, rebase/squash workflows, history search (blame, bisect, log -S), and branch management.

@@ -1,7 +1,7 @@
 ---
 description: Executes tasks without hesitation, guided by user. Uses LSP for verification.
 mode: primary
-model: opencode/gpt-5.1-codex
+model: github-copilot/gpt-5.2-codex
 permission:
   "*": allow
 ---

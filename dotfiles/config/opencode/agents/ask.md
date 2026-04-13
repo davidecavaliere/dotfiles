@@ -1,7 +1,7 @@
 ---
 description: Quickly answers questions using web search and GitHub code examples
 mode: subagent
-model: opencode/glm-5
+model: github-copilot/claude-haiku-4.5
 temperature: 0.3
 permission:
   edit: deny

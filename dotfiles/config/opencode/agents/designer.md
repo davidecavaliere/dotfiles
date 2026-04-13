@@ -1,7 +1,7 @@
 ---
 description: Designs UI/UX layouts, color schemes, component structure, and visual improvements. Can read existing styles and propose changes with concrete CSS/config.
 mode: subagent
-model: opencode/gemini-3.1-pro
+model: github-copilot/gemini-3.1-pro-preview
 temperature: 0.6
 permission:
   edit: deny

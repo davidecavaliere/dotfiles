@@ -36,10 +36,6 @@
     },
     "atlas": {
       "model": "github-copilot/gpt-5.2"
-    },
-    "hermes": {
-      "model": "github-copilot/claude-haiku-4.5",
-      "skills": ["git-master"]
     }
   },
   "categories": {

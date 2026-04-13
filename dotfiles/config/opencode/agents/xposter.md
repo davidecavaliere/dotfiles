@@ -1,7 +1,7 @@
 ---
 description: Composes and posts tweets to X/Twitter. Drafts the tweet, shows you for approval, then posts via MCP.
 mode: subagent
-model: opencode/glm-5
+model: github-copilot/claude-haiku-4.5
 temperature: 0.7
 permission:
   edit: deny

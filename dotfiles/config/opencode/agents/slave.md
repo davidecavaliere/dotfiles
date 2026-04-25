@@ -1,7 +1,7 @@
 ---
 description: Executes tasks without hesitation, guided by user. Uses LSP for verification.
-mode: primary
-model: github-copilot/gpt-5.2-codex
+mode: subagent
+model: github-copilot/claude-sonnet-4.5
 permission:
   "*": allow
 ---

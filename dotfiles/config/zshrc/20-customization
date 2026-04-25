@@ -71,3 +71,8 @@ omo() {
 
   OPENCODE_CONFIG_CONTENT="$updated_json" opencode "$@"
 }
+
+ooa() {
+  local config_file="$HOME/.config/opencode/opencode_opencode.jsonc"
+  OPENCODE_CONFIG_CONTENT="$(cat "$config_file")" opencode --pure "$@"
+}

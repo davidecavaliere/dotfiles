@@ -161,13 +161,6 @@
         "tooltip": false
     },
 
-    // Power Menu
-    "custom/exit": {
-        "format": "",
-        "on-click": "wlogout",
-        "tooltip": false
-    },
-
     // Keyboard State
     "keyboard-state": {
         "numlock": true,

@@ -23,7 +23,7 @@ dotfiles/config/          # 33 config directories, symlinked to ~/.config/
     settings/             # 59 plain-text setting files (not scripts)
     scripts/              # 13 utility scripts
   opencode/               # OpenCode agent config (AGENTS.md, rules, agents, models)
-  rofi/ waybar/ kitty/ alacritty/ swaync/ wlogout/ tmux/ walker/ ashell/ …
+  rofi/ waybar/ kitty/ alacritty/ swaync/ tmux/ walker/ ashell/ …
 dotfiles.json             # System package dependencies manifest
 opencode.json             # Root OpenCode config (model override only)
 ```
@@ -84,7 +84,7 @@ Single workflow: `.github/workflows/docs.yml` — deploys VitePress docs to GitH
 - Conventional commits: `type(scope): description` with emojis
   - Types: `feat`, `fix`, `style`, `chore`, `docs`, `refactor`
   - Scopes: component name (`hyprland`, `wallpaper`, `ashell`, `hyprpanel`, etc.)
-- 2 submodules: `alacritty/themes` (HTTPS) and `wlogout/themes/catppuccin` (SSH)
+- 1 submodule: `alacritty/themes` (HTTPS)
   - Init with: `git submodule update --init --recursive`
 
 ## Wallpaper System

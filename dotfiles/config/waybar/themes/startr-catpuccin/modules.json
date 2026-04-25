@@ -104,12 +104,6 @@
     "tooltip": false
   },
 
-  "custom/exit": {
-    "format": "",
-    "on-click": "wlogout",
-    "tooltip": false
-  },
-
 
   "tray": {
     "spacing": 10

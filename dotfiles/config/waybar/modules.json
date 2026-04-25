@@ -120,13 +120,6 @@
     "tooltip-format": "Left: Open the application launcher\nRight: Show all keybindings"
   },
 
-  "custom/exit": {
-    "format": "",
-    "on-click": "~/.config/ml4w/scripts/wlogout.sh",
-    "on-click-right": "hyprlock",
-    "tooltip-format": "Left: Power menu\nRight: Lock screen"
-  },
-
   "custom/notification": {
     "tooltip-format": "Left: Notifications\nRight: Do not disturb",
     "format": "{icon}",

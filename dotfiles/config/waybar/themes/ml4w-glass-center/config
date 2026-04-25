@@ -37,6 +37,5 @@
         "group/tools",
         "tray",
         "custom/notification",
-        "custom/exit",
     ]
 }

@@ -2,7 +2,7 @@
   "bar.customModules.storage.paths": [
     "/"
   ],
-  "theme.font.size": "0.8rem",
+  "theme.font.size": "0.91rem",
   "theme.font.name": "Ubuntu Nerd Font",
   "theme.font.label": "Fira Sans",
   "bar.layouts": {
@@ -10,23 +10,25 @@
       "left": [
         "custom/updates",
         "dashboard",
-        "cpu",
-        "ram",
-        "netstat",
-        "storage",
         "windowtitle"
       ],
       "middle": [
+        "notifications",
         "media",
         "workspaces",
         "clock"
       ],
       "right": [
+        "custom/gpu",
+        "custom/ollama",
+        "cpu",
+        "ram",
+        "netstat",
+        "storage",
         "volume",
         "network",
         "bluetooth",
         "systray",
-        "notifications",
         "power"
       ]
     },
@@ -72,5 +74,6 @@
   "menus.dashboard.stats.enabled": true,
   "menus.transition": "none",
   "menus.transitionTime": 125,
-  "scalingPriority": "hyprland"
+  "scalingPriority": "hyprland",
+  "notifications.position": "top"
 }

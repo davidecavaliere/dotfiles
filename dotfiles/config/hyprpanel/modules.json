@@ -10,5 +10,22 @@
         "actions": {
             "onLeftClick": "hyprctl dispatch exec \"$(cat ~/.config/ml4w/settings/terminal.sh) -e ~/.config/ml4w/scripts/installupdates.sh\""
         }
+    },
+    "custom/gpu": {
+        "icon": "󰍛",
+        "label": "{text}",
+        "tooltip": "{tooltip}",
+        "truncationSize": -1,
+        "execute": "~/.config/hypr/scripts/gpu-status.sh",
+        "interval": 2000
+    },
+    "custom/ollama": {
+        "icon": "󰛨",
+        "label": "{text}",
+        "tooltip": "{tooltip}",
+        "truncationSize": -1,
+        "execute": "~/.config/hypr/scripts/ollama-status.sh",
+        "interval": 5000,
+        "hideOnEmpty": true
     }
 }

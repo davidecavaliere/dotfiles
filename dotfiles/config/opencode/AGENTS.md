@@ -1,54 +1,71 @@
-## Using @ask Agent
 
-When you need to quickly answer questions or find information:
+Behavioral guidelines to reduce common LLM coding mistakes. Merge with project-specific instructions as needed.
 
-- Use `@ask` to invoke the research agent
-- It has access to `websearch` and `gh_grep` for finding answers
-- It's read-only (no file edits or bash commands)
+**Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.
 
-## Using @debug Agent
+## 1. Think Before Coding
 
-When troubleshooting an issue — invoke `@debug` instead of guessing.
+**Don't assume. Don't hide confusion. Surface tradeoffs.**
 
-- **Searches online first**: GitHub Issues, web search, documentation — before proposing any fix
-- **Reads local state**: Can read config files and run diagnostic commands (`journalctl`, `systemctl status`, `hyprctl`, `pacman -Q`, etc.)
-- **Read-only**: Cannot edit or create files — only reports findings with cited sources
-- **Use when**: Something is broken, misbehaving, or you need to understand why a tool/config isn't working
+Before implementing:
+- State your assumptions explicitly. If uncertain, ask.
+- If multiple interpretations exist, present them - don't pick silently.
+- If a simpler approach exists, say so. Push back when warranted.
+- If something is unclear, stop. Name what's confusing. Ask.
 
-## Using @scout Agent
+## 2. Simplicity First
 
-When exploring ideas, evaluating libraries, or researching approaches — invoke `@scout`.
+**Minimum code that solves the problem. Nothing speculative.**
 
-- **Searches broadly then deeply**: Finds latest libraries, compares options, checks real-world usage on GitHub
-- **Opinionated**: Doesn't just list options — recommends one and explains why
-- **Checks recency and health**: Flags stale repos, compares star counts, looks at recent activity
-- **Read-only**: Cannot edit or create files — reports findings with links and recommendations
-- **Use when**: "What's the best library for X?", "Is there a better way to do Y?", "What are people using for Z these days?"
+- No features beyond what was asked.
+- No abstractions for single-use code.
+- No "flexibility" or "configurability" that wasn't requested.
+- No error handling for impossible scenarios.
+- If you write 200 lines and it could be 50, rewrite it.
 
-## Using @designer Agent
+Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.
 
-When you need UI/UX guidance, layout decisions, or visual improvements — invoke `@designer`.
+## 3. Surgical Changes
 
-- **Reads existing styles**: Understands your current theme, colors, spacing before proposing changes
-- **Delivers specifics**: Exact hex colors, pixel values, CSS/config snippets — not vague suggestions
-- **Accessibility-aware**: Checks contrast ratios, flags WCAG issues
-- **Read-only**: Cannot edit or create files — provides implementable code/config for you to apply
-- **Use when**: "How should I style this panel?", "Redesign the login screen", "What colors work with Catppuccin Mocha?"
+**Touch only what you must. Clean up only your own mess.**
 
-## Using @xposter Agent
+When editing existing code:
+- Don't "improve" adjacent code, comments, or formatting.
+- Don't refactor things that aren't broken.
+- Match existing style, even if you'd do it differently.
+- If you notice unrelated dead code, mention it - don't delete it.
 
-When you want to post on X/Twitter — invoke `@xposter`.
+When your changes create orphans:
+- Remove imports/variables/functions that YOUR changes made unused.
+- Don't remove pre-existing dead code unless asked.
 
-- **Drafts first, posts after approval**: Shows you the tweet before posting — never auto-posts
-- **Respects character limits**: Counts characters, proposes threads if needed
-- **Posts via MCP**: Uses `agent-twitter-client-mcp` to post (requires auth cookies or API keys)
-- **Use when**: "Tweet about this feature I just shipped", "Post a thread about my new setup"
+The test: Every changed line should trace directly to the user's request.
+
+## 4. Goal-Driven Execution
+
+**Define success criteria. Loop until verified.**
+
+Transform tasks into verifiable goals:
+- "Add validation" → "Write tests for invalid inputs, then make them pass"
+- "Fix the bug" → "Write a test that reproduces it, then make it pass"
+- "Refactor X" → "Ensure tests pass before and after"
+
+For multi-step tasks, state a brief plan:
+```
+1. [Step] → verify: [check]
+2. [Step] → verify: [check]
+3. [Step] → verify: [check]
+```
+
+Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
+
+---
+
+**These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
 
 ## Hermes — Git Workflow Agent
 
 **Purpose:** Specialized agent for complex git operations including atomic commits, rebase/squash workflows, history search (blame, bisect, log -S), and branch management.
-
-**Skill:** `git-master` (built-in)
 
 **Scope: CAN Do**
 - Atomic commits with conventional commit style (references Commit Guidelines section)
@@ -80,3 +97,27 @@ When you want to post on X/Twitter — invoke `@xposter`.
 **Staging Override**
 - **Hermes MAY stage new files** when performing batch git operations that require staging (e.g., preparing commits, rebase workflows)—this is an exception to the global "never stage new files" rule
 - User must still approve staged content before final commit
+
+<!-- codebase-memory-mcp:start -->
+# Codebase Knowledge Graph (codebase-memory-mcp)
+
+This project uses codebase-memory-mcp to maintain a knowledge graph of the codebase.
+ALWAYS prefer MCP graph tools over grep/glob/file-search for code discovery.
+
+## Priority Order
+1. `search_graph` — find functions, classes, routes, variables by pattern
+2. `trace_path` — trace who calls a function or what it calls
+3. `get_code_snippet` — read specific function/class source code
+4. `query_graph` — run Cypher queries for complex patterns
+5. `get_architecture` — high-level project summary
+
+## When to fall back to grep/glob
+- Searching for string literals, error messages, config values
+- Searching non-code files (Dockerfiles, shell scripts, configs)
+- When MCP tools return insufficient results
+
+## Examples
+- Find a handler: `search_graph(name_pattern=".*OrderHandler.*")`
+- Who calls it: `trace_path(function_name="OrderHandler", direction="inbound")`
+- Read source: `get_code_snippet(qualified_name="pkg/orders.OrderHandler")`
+<!-- codebase-memory-mcp:end -->

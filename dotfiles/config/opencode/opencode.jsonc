@@ -1,0 +1,81 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "share": "disabled",
+  "lsp": true,
+  "plugin": [
+    ["@vectorize-io/opencode-hindsight", {
+      "hindsightApiUrl": "http://localhost:9077",
+      "dynamicBankId": true,
+      "dynamicBankGranularity": ["gitProject"],
+      "retainContext": "opencode"
+    }]
+  ],
+  "agent": {
+    "watson": {
+      "model": "opencode-go/deepseek-v4-pro",
+      "mode": "primary",
+      "permission": {
+        "websearch": "allow",
+        "webfetch": "allow"
+      }
+    },
+    "build": {
+      "model": "opencode-go/deepseek-v4-pro",
+      "mode": "primary"
+    },
+    "hermes": {
+      "model": "opencode-go/deepseek-v4-flash"
+    },
+    "ask": {
+      "model": "opencode-go/deepseek-v4-flash"
+    },
+    "sight": {
+      "model": "openrouter/google/gemini-2.5-flash"
+    }
+  },
+  "mcp": {
+    "gh_grep": {
+      "type": "remote",
+      "url": "https://mcp.grep.app"
+    },
+    "git-mcp": {
+      "type": "remote",
+      "url": "https://gitmcp.io/docs"
+    },
+    "chrome-devtools": {
+      "type": "local",
+      "command": ["npx", "-y", "chrome-devtools-mcp@latest"],
+      "enabled": true
+    },
+    "filesystem": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-filesystem"],
+      "enabled": true
+    },
+    "twitter": {
+      "type": "local",
+      "command": ["npx", "-y", "agent-twitter-client-mcp"],
+      "enabled": false
+    },
+    "web-search": {
+      "type": "local",
+      "command": ["npx", "-y", "@zhafron/mcp-web-search"],
+      "enabled": true
+    },
+
+    "playwright": {
+      "type": "local",
+      "command": ["npx", "-y", "@playwright/mcp@latest"],
+      "enabled": true
+    },
+    "node-debugger": {
+      "type": "local",
+      "command": ["npx", "-y", "@hyperdrive-eng/mcp-nodejs-debugger"],
+      "enabled": true
+    }
+  },
+    "instructions": [
+      "rules/tone.md",
+      "rules/watson.md"
+    ]
+}

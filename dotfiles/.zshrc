@@ -36,3 +36,6 @@ if [ -f ~/.zshrc_custom ]; then
 fi
 
 source /usr/share/nvm/init-nvm.sh
+
+# Added by codebase-memory-mcp install
+export PATH="/home/dcavaliere/.local/bin:$PATH"

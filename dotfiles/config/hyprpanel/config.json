@@ -10,7 +10,9 @@
       "left": [
         "custom/updates",
         "dashboard",
-        "windowtitle"
+        "windowtitle",
+        "custom/capslock",
+        "kbinput"
       ],
       "middle": [
         "notifications",
@@ -75,5 +77,8 @@
   "menus.transition": "none",
   "menus.transitionTime": 125,
   "scalingPriority": "hyprland",
-  "notifications.position": "top"
+  "notifications.position": "top",
+  "bar.customModules.kbLayout.label": true,
+  "bar.customModules.kbLayout.labelType": "code",
+  "bar.customModules.kbLayout.leftClick": "hyprctl switchxkblayout all next"
 }

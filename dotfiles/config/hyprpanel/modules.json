@@ -27,5 +27,14 @@
         "execute": "~/.config/hypr/scripts/ollama-status.sh",
         "interval": 5000,
         "hideOnEmpty": true
+    },
+    "custom/capslock": {
+        "icon": "󰪛",
+        "label": "{text}",
+        "tooltip": "{tooltip}",
+        "truncationSize": -1,
+        "execute": "~/.config/hypr/scripts/caps-status.sh",
+        "interval": 500,
+        "hideOnEmpty": true
     }
 }

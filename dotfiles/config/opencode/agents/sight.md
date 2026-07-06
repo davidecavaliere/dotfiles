@@ -1,7 +1,6 @@
 ---
 description: Image analysis agent — reads image files and describes their contents. Use when the user asks "what's in this image?" or needs visual analysis of screenshots, photos, diagrams, or UI mockups.
 mode: subagent
-model: openrouter/google/gemini-2.5-flash
 temperature: 0.3
 permission:
   edit: deny

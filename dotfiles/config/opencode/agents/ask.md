@@ -1,7 +1,7 @@
 ---
 description: Research agent — web search, documentation lookup, GitHub code examples. Summarizes findings concisely.
 mode: subagent
-model: opencode-go/deepseek-v4-flash
+model: openrouter/google/gemma-4-31b-it:free
 temperature: 0.3
 permission:
   edit: deny

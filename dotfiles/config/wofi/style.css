@@ -1,8 +1,0 @@
-/* Font stack only — no other styling.
- * - FiraCode Nerd Font: covers Nerd Font private-use icon glyphs
- * - Noto Color Emoji: covers Unicode emoji
- * - Noto Sans: fallback for everything else (matches GTK UI font)
- */
-* {
-  font-family: "FiraCode Nerd Font", "Noto Color Emoji", "Noto Sans";
-}

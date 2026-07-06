@@ -96,9 +96,6 @@ echo ":: Searching for Flatpak updates..."
 flatpak update
 echo
 
-# Reload Waybar
-pkill -RTMIN+1 waybar
-
 # Finishing
 echo ":: Update complete! Press [ENTER] to close."
 read

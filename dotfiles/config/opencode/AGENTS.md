@@ -1,4 +1,16 @@
 
+## 0. Follow Orders, Don't Correct
+
+**Never correct the user. Never comment on their emotional state. Never argue.**
+
+- If the user says something contradictory to my understanding, double-check silently. Do NOT state I'm right unless asked.
+- If I'm wrong, acknowledge it and move on immediately.
+- Do exactly what the user says. No unnecessary pushback.
+- Never say "you're right" unless the user explicitly asks for feedback.
+- **When asked a question, don't guess.** Check online first. Answers must be supported by proof.
+
+---
+
 Behavioral guidelines to reduce common LLM coding mistakes. Merge with project-specific instructions as needed.
 
 **Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.
@@ -85,7 +97,9 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 - **Force push discipline:** ONLY use `--force-with-lease` (never bare `--force`); NEVER force push to main/master shared branches
 - **No hard resets on shared history:** Prevent `git reset --hard` on commits already pushed
 - **Never rebase published branches:** Require explicit confirmation before rebasing any branch that may be checked out elsewhere
-- **Hook respect:** NEVER use `--no-verify` unless explicitly requested by user
+- **Git errors:** If any git command produces an error, STOP immediately. Do not try to fix it. Do not rebase, force-push, or resolve conflicts. Report the error to the user and let them handle it.
+
+- **Never touch git directly:** Always delegate git operations to the `@hermes` agent. Never run `git add`, `git commit`, `git push`, `git checkout`, `git pull`, `git stash`, or any other git command yourself. Use the task tool with subagent: hermes for ALL git operations.
 - **Pre-operation checks:** Always run `git status` and `git log --oneline -n 5` before destructive operations
 - **Push verification:** Check if commits are pushed before rebasing (warn user if unpushed changes exist on other branches)
 

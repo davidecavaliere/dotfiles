@@ -99,11 +99,10 @@ Declared in `dotfiles.json`: hyprland, hyprctl, hyprpaper, hypridle, hyprlock, h
 
 Config at `dotfiles/config/opencode/`:
 - `opencode.jsonc` — main config (model, MCP servers, agents, instruction rules)
-- `rules/code-implementation.md` — **never run build/test commands; never uncomment code without permission**
-- `rules/commit-guidelines.md` — conventional commits with emojis; never stage new files
-- `agents/ask.md` — read-only research agent (web search, library evaluation, no file edits)
-- `agents/debug.md` — read-only troubleshooter (searches online first, runs diagnostic commands, cites sources)
-- `agents/lector.md` — read-only file presenter (opens files in tmux+nvim pane)
-- `agents/build.md` — primary driver (delegation-heavy, terse, intent classification)
-- Hermes agent — git specialist (see `AGENTS.md` in opencode dir)
-- `oh-my-openagent.json` — model mappings for agent categories (GitHub Copilot models)
+- `rules/watson.md` — minimal-change discipline; LSP validation; prefer websearch/webfetch
+- `rules/tone.md` — (reserved)
+- `agents/ask.md` — read-only research subagent (web search, docs, GitHub examples)
+- `agents/hermes.md` — git specialist subagent (atomic commits, rebase/squash, history search)
+- `agents/sight.md` — image analysis subagent (reads image files, clipboard screenshots)
+- `watson` and `build` agents — defined inline in `opencode.jsonc` (primary mode, opencode-go models)
+

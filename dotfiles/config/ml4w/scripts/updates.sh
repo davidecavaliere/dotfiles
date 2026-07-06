@@ -82,7 +82,7 @@ else
 fi
 
 # ----------------------------------------------------- 
-# Output in JSON format for Waybar Module custom-updates
+# Output in JSON format for HyprPanel custom-updates module
 # ----------------------------------------------------- 
 
 css_class="green"

@@ -1,7 +1,7 @@
 ---
 description: Specialized agent for complex git operations including atomic commits, rebase/squash workflows, history search, and branch management.
 mode: subagent
-model: github-copilot/claude-haiku-4.5
+model: openrouter/cohere/north-mini-code:free
 temperature: 0.3
 permission:
   "*": allow

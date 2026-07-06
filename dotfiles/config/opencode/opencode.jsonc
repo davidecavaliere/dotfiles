@@ -1,5 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "model": "opencode/kimi-k2.7-code",
   "share": "disabled",
   "lsp": true,
   "plugin": [
@@ -12,7 +13,7 @@
   ],
   "agent": {
     "watson": {
-      "model": "opencode-go/deepseek-v4-pro",
+      "model": "opencode-go/minimax-m2.7",
       "mode": "primary",
       "permission": {
         "websearch": "allow",
@@ -20,20 +21,41 @@
       }
     },
     "build": {
-      "model": "opencode-go/deepseek-v4-pro",
+      "model": "opencode-go/glm-5.2",
       "mode": "primary"
     },
     "hermes": {
-      "model": "opencode-go/deepseek-v4-flash"
+      "model": "github-copilot/gpt-5.2-codex"
     },
     "ask": {
-      "model": "opencode-go/deepseek-v4-flash"
+      "model": "github-copilot/gemini-2.5-pro"
     },
     "sight": {
-      "model": "openrouter/google/gemini-2.5-flash"
+      "model": "github-copilot/gpt-4.1"
     }
   },
   "mcp": {
+    "codebase-memory-mcp": {
+      "enabled": true,
+      "type": "local",
+      "command": [
+        "/usr/bin/codebase-memory-mcp"
+      ]
+    },
+    "serena": {
+      "enabled": true,
+      "type": "local",
+      "command": [
+        "serena",
+        "start-mcp-server",
+        "--no-webui"
+      ]
+    },
+    "math-mcp": {
+      "type": "local",
+      "command": ["npx", "-y", "math-mcp"],
+      "enabled": true
+    },
     "gh_grep": {
       "type": "remote",
       "url": "https://mcp.grep.app"
@@ -62,7 +84,6 @@
       "command": ["npx", "-y", "@zhafron/mcp-web-search"],
       "enabled": true
     },
-
     "playwright": {
       "type": "local",
       "command": ["npx", "-y", "@playwright/mcp@latest"],
@@ -74,8 +95,8 @@
       "enabled": true
     }
   },
-    "instructions": [
-      "rules/tone.md",
-      "rules/watson.md"
-    ]
+  "instructions": [
+    "rules/tone.md",
+    "rules/watson.md"
+  ]
 }

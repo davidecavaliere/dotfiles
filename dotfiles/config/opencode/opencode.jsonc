@@ -31,7 +31,7 @@
       "model": "github-copilot/gemini-2.5-pro"
     },
     "sight": {
-      "model": "github-copilot/gpt-4.1"
+      "model": "ollama/gemma4:12b"
     }
   },
   "mcp": {
@@ -93,6 +93,17 @@
       "type": "local",
       "command": ["npx", "-y", "@hyperdrive-eng/mcp-nodejs-debugger"],
       "enabled": true
+    }
+  },
+  "provider": {
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      },
+      "models": {
+        "gemma4:12b": {}
+      }
     }
   },
   "instructions": [

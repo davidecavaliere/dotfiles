@@ -1,7 +1,6 @@
 ---
 description: Specialized agent for complex git operations including atomic commits, rebase/squash workflows, history search, and branch management.
 mode: subagent
-model: openrouter/cohere/north-mini-code:free
 temperature: 0.3
 permission:
   "*": allow

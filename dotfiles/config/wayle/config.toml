@@ -1,0 +1,87 @@
+imports = []
+
+[general]
+font-sans = "Fira Sans"
+font-mono = "JetBrains Mono"
+
+[bar]
+# Overall compactness: scale multiplies padding/spacing/radius across the bar.
+scale = 0.7
+# Smaller label text and icons (multipliers; 1.0 = default).
+# button-label-size = 0.85
+# button-icon-size = 0.85
+
+# Single bar mirroring the old hyprpanel layout 0. Only DP-1 is connected;
+# "*" covers whatever monitor is present.
+[[bar.layout]]
+monitor = "*"
+show = true
+left = [
+    "custom-updates",
+    "window-title",
+    "custom-capslock",
+    "keyboard-input",
+    "custom-gpu",
+    "custom-ollama",
+    "cpu",
+    "ram",
+    "netstat",
+    "storage",
+    "volume",
+]
+center = [
+    "notifications",
+    "media",
+    "hyprland-workspaces",
+    "clock",
+]
+right = [
+    "network",
+    "bluetooth",
+    # "systray",
+    "dashboard",
+]
+
+# Match hyprpanel's kbLayout left-click (cycle Hyprland xkb layouts).
+[modules.keyboard-input]
+left-click = "hyprctl switchxkblayout all next"
+
+# The power button has no built-in action; wire it to the wlogout menu.
+[modules.power]
+left-click = "wlogout"
+
+# Notifications default to top-right; show them top-center instead.
+[modules.notifications]
+popup-position = "top-center"
+
+# --- Custom modules (reuse the existing hyprpanel scripts) ---
+# Each script emits JSON with `text`/`tooltip`/`class`, which wayle honors
+# directly, so no format string is needed.
+
+[[modules.custom]]
+id = "updates"
+command = "$HOME/.config/ml4w/scripts/updates.sh"
+interval-ms = 3600000
+icon-name = "ld-package-symbolic"
+hide-if-empty = false
+left-click = "hyprctl dispatch exec \"$(cat $HOME/.config/ml4w/settings/terminal.sh) -e $HOME/.config/ml4w/scripts/installupdates.sh\""
+
+[[modules.custom]]
+id = "gpu"
+command = "$HOME/.config/hypr/scripts/gpu-status.sh"
+interval-ms = 2000
+icon-name = "si-nvidia-symbolic"
+
+[[modules.custom]]
+id = "ollama"
+command = "$HOME/.config/hypr/scripts/ollama-status.sh"
+interval-ms = 5000
+icon-name = "si-ollama-symbolic"
+hide-if-empty = true
+
+[[modules.custom]]
+id = "capslock"
+command = "$HOME/.config/hypr/scripts/caps-status.sh"
+interval-ms = 500
+icon-name = "md-keyboard_capslock-symbolic"
+hide-if-empty = true

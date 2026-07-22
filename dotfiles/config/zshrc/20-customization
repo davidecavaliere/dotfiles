@@ -9,6 +9,11 @@ POSH=agnoster
 # ZSH_THEME=robbyrussell
 
 # -----------------------------------------------------
+# Case-sensitive tab completion (oh-my-zsh; must be set before sourcing)
+# -----------------------------------------------------
+CASE_SENSITIVE="true"
+
+# -----------------------------------------------------
 # oh-my-zsh plugins
 # -----------------------------------------------------
 plugins=(

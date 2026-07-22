@@ -40,6 +40,7 @@ right = [
     "bluetooth",
     # "systray",
     "dashboard",
+    "power",
 ]
 
 # Match hyprpanel's kbLayout left-click (cycle Hyprland xkb layouts).

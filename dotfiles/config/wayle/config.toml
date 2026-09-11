@@ -65,7 +65,7 @@ command = "$HOME/.config/ml4w/scripts/updates.sh"
 interval-ms = 3600000
 icon-name = "ld-package-symbolic"
 hide-if-empty = false
-left-click = "hyprctl dispatch exec \"$(cat $HOME/.config/ml4w/settings/terminal.sh) -e $HOME/.config/ml4w/scripts/installupdates.sh\""
+left-click = "$(cat $HOME/.config/ml4w/settings/terminal.sh) -e $HOME/.config/ml4w/scripts/installupdates.sh"
 
 [[modules.custom]]
 id = "gpu"

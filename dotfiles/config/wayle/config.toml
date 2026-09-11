@@ -17,10 +17,6 @@ scale = 0.7
 monitor = "*"
 show = true
 left = [
-    "custom-updates",
-    "window-title",
-    "custom-capslock",
-    "keyboard-input",
     "custom-gpu",
     "custom-ollama",
     "cpu",
@@ -30,15 +26,19 @@ left = [
     "volume",
 ]
 center = [
+    "custom-updates",
     "notifications",
     "media",
     "hyprland-workspaces",
     "clock",
 ]
 right = [
-    "network",
-    "bluetooth",
-    # "systray",
+    # "network",
+    # "bluetooth",
+    "window-title",
+    "keyboard-input",
+    "custom-capslock",
+    "systray",
     "dashboard",
     "power",
 ]

@@ -3,14 +3,6 @@
   "model": "opencode/kimi-k2.7-code",
   "share": "disabled",
   "lsp": true,
-  "plugin": [
-    ["@vectorize-io/opencode-hindsight", {
-      "hindsightApiUrl": "http://localhost:9077",
-      "dynamicBankId": true,
-      "dynamicBankGranularity": ["gitProject"],
-      "retainContext": "opencode"
-    }]
-  ],
   "agent": {
     "watson": {
       "model": "opencode-go/minimax-m2.7",
